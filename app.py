@@ -4,21 +4,22 @@ import yaml
 app = Flask(__name__)
 
 db = yaml.load(open('db.yaml'))
-app.config['MYSQL_HOST'] = db['mysql_hsot']
+app.config['MYSQL_HOST'] = db['mysql_host']
 app.config['MYSQL_USER'] = db['mysql_user']
 app.config['MYSQL_DB'] = db['mysql_db']
 app.config['MYSQL_PASSWORD'] = db['mysql_password']
 
-
-@app.route("/", methods=['GET', 'POSTS'])
+mysql = MySQL(app)
+@app.route("/", methods=['GET', 'POST'])
 def HomePage():
-    if method.request == 'POST':
+    if request.method == 'POST':
         # fetch from data
-        carDetails = requst.form
-        plate = carDetails['plate']
-        name = carDetails['name']
+        carDetails = request.form
+        Reg_no = carDetails['Reg_num']
+        Color = carDetails['Color']
+        PersonID = carDetails['PersonID']
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO car(plat, name) VALUES(%s, %s)", (plate, name))
+        cur.execute("INSERT INTO Cars(Reg_num, Color, PersonID) VALUES(%s, %s, %s)", (Reg_no, Color, PersonID))
         mysql.connection.commit()
         cur.close()
         return 'sucess'
@@ -26,3 +27,5 @@ def HomePage():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+    
