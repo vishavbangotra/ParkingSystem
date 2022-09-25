@@ -10,8 +10,16 @@ app.config['MYSQL_DB'] = db['mysql_db']
 app.config['MYSQL_PASSWORD'] = db['mysql_password']
 
 mysql = MySQL(app)
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/", methods=['GET'])
 def HomePage():
+    if request.method == "GET":
+        return render_template("index.html")
+
+
+@app.route("/entry", methods=['GET', 'POST'])
+def Entry():
+    if request.method == "GET":
+        return render_template("entry.html")
     if request.method == 'POST':
         # fetch from data
         carDetails = request.form
@@ -23,7 +31,6 @@ def HomePage():
         mysql.connection.commit()
         cur.close()
         return 'sucess'
-    return render_template("index.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
