@@ -21,6 +21,7 @@
 #### PARKING_SLOTS
 | KEY                 |COLUMN NAME       | TYPE         |
 |:--------------------|:-----------------|:-------------|
-| PRIMARY_KEY         | serial_num       | VARCHAR(32)  |
+| PRIMARY_KEY         | Serial_num       | VARCHAR(32)  |
 |                     | Occupied         | BOOLEAN      |
 | FOREIGN_KEY (Cars)  | Car_reg_num      | VARCHAR      |
+|                     | Parking_date_time| DATETIME     |
