@@ -1,6 +1,6 @@
 ## DATABASE SCHEMA FOR FLASKAPP
 
-#### CUSTOMERS                      
+#### Customers                  
 | KEY              | COLUMN NAME         | TYPE         |                     
 | :------------    | :-------------------| :----------- |
 | PRIMARY_KEY      | Customer_ID         | VARCHAR(32)  |

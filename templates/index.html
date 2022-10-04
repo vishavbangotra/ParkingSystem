@@ -1,7 +1,29 @@
 {% extends 'base.html' %}
 {% block body %}
-
-<div>
-    home
+<div class="container">
+    <div class="d-flex justify-content-around">
+        <button type="button" class="btn btn-dark"> Entry</button>
+        <button type="button" class="btn btn-dark">Exit</button>
+    </div>
+    <table class="table-dark table table-hover table-striped">
+        <tr>
+            <th>MODEL</th>
+            <th>OWNER ID</th>
+            <th>REGISTERATION</th>
+            <th>COLOUR</th>
+            <th>TYPE</th>
+            <th>ENTRY TIME</th>
+        </tr>
+        {% for vehicle in vehicles %}
+        <tr>
+            <td>{{vehicle[2]}}</td>
+            <td>{{vehicle[1]}}</td>
+            <td>{{vehicle[0]}}</td>
+            <td>{{vehicle[3]}}</td>
+            <td>{{vehicle[4]}}</td>
+            <td>{{vehicle[5]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </div>
 {% endblock %}
